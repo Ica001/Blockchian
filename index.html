@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <!--  sets window.abi -->
+    
+    
+   
+</head>
+<body>
+ 
+    <form action="" method="post" id="form1">
+        <label for="number1"> ProjectId</label>
+        <input type="number" value="" id="number1">
+        <button type="submit" >Accept</button>
+   </form>
+   <form action="" method="post" id="form2">
+    <label for="number2"> ProjectId</label>
+    <input type="number" value="" id="number2">
+    <button type="submit" >Apply for evaluator</button>
+</form>
+<form action="" method="post" id="form3">
+    <label for="number3"> id , min_tokens</label>
+    <input type="number" value="" id="number3">
+    <input type="number" value="" id="number30">
+    <button type="submit" >Apply for freelancer</button>
+</form>
+<form action="" method="post" id="form4">
+    <label for="number4"> Project_id,freelancer_id</label>
+    <input type="number" value="" id="number4">
+    <input type="number" value="" id="number40">
+    <button type="submit" >Chose_freelancer</button>
+</form>
+<form action="" method="post" id="form5">
+    <label >Create a product</label>
+    <input type="text" value="" id="text5">
+    <input type="number" value="" id="number5">
+    <input type="number" value="" id="number50">
+    <button type="submit" >Create a Product</button>
+</form>
+<form action="" method="post" id="form6">
+    <label >Manager,Evaluator,Freelancer,Finantator</label>
+    <input type="text" value="" id="text6">
+    <input type="text" value="" id="text60">
+    <input type="text" value="" id="text61">
+    <input type="text" value="" id="text62">
+    <button type="submit" >Init marketplace</button>
+</form>
+<form action="" method="post" id="form7">
+    <label for="number1"> Number</label>
+    <input type="number" value="" id="number7">
+    <button type="submit" >Proj_done</button>
+</form>
+<form action="" method="post" id="form8">
+    <label for="number8"> Number</label>
+    <input type="number" value="" id="number8">
+    <button type="submit" >Reject_Project</button>
+</form>
+<form action="" method="post" id="form9">
+    <label for="number8"> Reject project number:</label>
+    <input type="number" value="" id="number9">
+    <button type="submit" >Start Project</button>
+</form>
+<form action="" method="post" id="form10">
+    <label for="number8"> Solve Dispute:</label>
+    <input type="number" value="" id="number10">
+    <input type="number" value="" id="number100">
+    <button type="submit" >Resolve</button>
+</form>
+<form action="" method="post" id="form11">
+    <input type="number" value="" id="number11">
+
+    <button type="submit" >Show contract name</button>
+</form>
+<form action="" method="post" id="form12">
+    <label for="number4"> Show applyer</label>
+    <input type="number" value="" id="number12">
+    <input type="number" value="" id="number120">
+    <button type="submit" >show Frelancer</button>
+</form>
+
+    <script src="abi.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.2.9/dist/web3.js"></script>
+    <script >
+           window.web3 = new Web3(window.ethereum);
+       const contractAddress = "0xFe851e4b871ED588846EA4D9caC4Fa0288731d3E";
+        const myContract =  new web3.eth.Contract(abi, contractAddress);
+       
+        async function handl(val){
+       
+       const acccounts=await window.ethereum.request(
+           {method: 'eth_requestAccounts'}
+       );
+       const myAccount= acccounts[0];
+      
+       
+      
+         
+       myContract.methods.setNum(val).send(
+          {
+              from:myAccount,
+              gasPrice: 200000000
+          },
+          function(error,result){
+              if(error){
+                  console.log("fdf"+error);
+              }
+          }
+      );
+
+     
+     }
+   
+      async function handl1(val){
+       
+         const acccounts=await window.ethereum.request(
+             {method: 'eth_requestAccounts'}
+         );
+         const myAccount= acccounts[0];
+        
+         
+        
+           
+         myContract.methods.accept_project(val).send(
+            {
+                from:myAccount,
+                gasPrice: 200000000
+            },
+            function(error,result){
+                if(error){
+                    console.log("fdf"+error);
+                }
+            }
+        );
+
+       
+       }
+      
+        
+       async function handl2(val){
+       
+       const acccounts=await window.ethereum.request(
+           {method: 'eth_requestAccounts'}
+       );
+       const myAccount= acccounts[0];
+      
+       
+      
+         
+       myContract.methods.apply_for_job_evaluator(val).send(
+          {
+              from:myAccount,
+              gasPrice: 200000000
+          },
+          function(error,result){
+              if(error){
+                  console.log("fdf"+error);
+              }
+          }
+      );
+
+     
+     }
+    
+     async function handl3(val,val2){
+       
+       const acccounts=await window.ethereum.request(
+           {method: 'eth_requestAccounts'}
+       );
+       const myAccount= acccounts[0];
+      
+       
+      
+         
+       myContract.methods.apply_for_job_freelancer(val,val2).send(
+          {
+              from:myAccount,
+              gasPrice: 200000000
+          },
+          function(error,result){
+              if(error){
+                  console.log("fdf"+error);
+              }
+          }
+      );
+
+     
+     }
+     async function handl4(val,val2){
+       
+       const acccounts=await window.ethereum.request(
+           {method: 'eth_requestAccounts'}
+       );
+       const myAccount= acccounts[0];
+      
+       
+      
+         
+       myContract.methods.choose_freelancer(val,val2).send(
+          {
+              from:myAccount,
+              gasPrice: 200000000
+          },
+          function(error,result){
+              if(error){
+                  console.log("fdf"+error);
+              }
+          }
+      );
+
+     
+     }
+    
+     async function handl5(text ,val,val2){
+       
+       const acccounts=await window.ethereum.request(
+           {method: 'eth_requestAccounts'}
+       );
+       const myAccount= acccounts[0];
+      
+       
+      
+         
+       myContract.methods.createProduct(text,val,val2).send(
+          {
+              from:myAccount,
+              gasPrice: 200000000
+          },
+          function(error,result){
+              if(error){
+                  console.log("fdf"+error);
+              }
+          }
+      );
+
+     
+     }
+    
+     async function handl6(text1 ,text2,text3,text4){
+       
+       const acccounts=await window.ethereum.request(
+           {method: 'eth_requestAccounts'}
+       );
+       const myAccount= acccounts[0];
+      
+       
+      
+         
+       myContract.methods.initMarketplace(text1,text2,text3,text4).send(
+          {
+              from:myAccount,
+              gasPrice: 2000000000
+          },
+          function(error,result){
+              if(error){
+                  console.log("fdf"+error);
+              }
+          }
+      );
+
+     
+     }
+    
+     async function handl7(val){
+       
+       const acccounts=await window.ethereum.request(
+           {method: 'eth_requestAccounts'}
+       );
+       const myAccount= acccounts[0];
+      
+       
+      
+         
+       myContract.methods.project_done(val).send(
+          {
+              from:myAccount,
+              gasPrice: 200000000
+          },
+          function(error,result){
+              if(error){
+                  console.log("fdf"+error);
+              }
+          }
+      );
+
+     
+     }
+     async function handl8(val){
+       
+       const acccounts=await window.ethereum.request(
+           {method: 'eth_requestAccounts'}
+       );
+       const myAccount= acccounts[0];
+      
+       
+      
+         
+       myContract.methods.reject_project(val).send(
+          {
+              from:myAccount,
+              gasPrice: 200000000
+          },
+          function(error,result){
+              if(error){
+                  console.log("fdf"+error);
+              }
+          }
+      );
+
+     
+     }
+    
+     async function handl9(val){
+       
+       const acccounts=await window.ethereum.request(
+           {method: 'eth_requestAccounts'}
+       );
+       const myAccount= acccounts[0];
+      
+       
+      
+         
+       myContract.methods.start_project(val).send(
+          {
+              from:myAccount,
+              gasPrice: 200000000
+          },
+          function(error,result){
+              if(error){
+                  console.log("fdf"+error);
+              }
+          }
+      );
+
+     
+     }
+    
+     async function handl10(val,val2){
+       
+       const acccounts=await window.ethereum.request(
+           {method: 'eth_requestAccounts'}
+       );
+       const myAccount= acccounts[0];
+      
+       
+      
+         
+       myContract.methods.solve_dispute(val,val2).send(
+          {
+              from:myAccount,
+              gasPrice: 200000000
+          },
+          function(error,result){
+              if(error){
+                  console.log("fdf"+error);
+              }
+          }
+      );
+
+     
+     }
+      
+     
+     function handl(val){
+           myContract.methods.show_contract(val).call().then(function (result) {
+            alert(result);
+        });
+       }
+      
+       function handl12(val,val2){
+           myContract.methods.show_applyer(val,val2).call().then(function (result) {
+            alert(result);
+        });
+       }
+      
+    
+
+         document.getElementById('form1').addEventListener('submit',onSubmitForm1);
+         function onSubmitForm1(e) {
+             e.preventDefault();
+             const inputEl = document.getElementById('number1');
+            const number = inputEl.value;
+             handl1(number);
+         }
+
+         document.getElementById('form2').addEventListener('submit',onSubmitForm2);
+         function onSubmitForm2(e) {
+             e.preventDefault();
+             const inputEl = document.getElementById('number2');
+            const number = inputEl.value;
+             handl2(number);
+         }
+         document.getElementById('form3').addEventListener('submit',onSubmitForm3);
+         function onSubmitForm3(e) {
+             e.preventDefault();
+             
+             const inputEl = document.getElementById('number3');
+             const inputEl0=document.getElementById('number30');
+             const number2=inputEl0.value;
+            const number = inputEl.value;
+            
+             handl3(number,number2);
+         }
+         document.getElementById('form4').addEventListener('submit',onSubmitForm4);
+         function onSubmitForm4(e) {
+             e.preventDefault();
+             const inputEl = document.getElementById('number4');
+             const inputEl0 = document.getElementById('number40');
+            const number = inputEl.value;
+            const number0=inputEl0.value;
+             handl4(number,number0);
+         }
+         document.getElementById('form5').addEventListener('submit',onSubmitForm5);
+         function onSubmitForm5(e) {
+             e.preventDefault();
+             const inputEl = document.getElementById('text5');
+             const inputEl0 = document.getElementById('number5');
+             const inputEl1=document.getElementById('number50');
+            const text = inputEl.value;
+            const number0=inputEl0.value;
+            const number1=inputEl1.value;
+            
+             handl5(text,number0,number1);
+         }
+         document.getElementById('form6').addEventListener('submit',onSubmitForm6);
+         function onSubmitForm6(e) {
+             e.preventDefault();
+             const inputEl = document.getElementById('text6');
+             const inputEl0 = document.getElementById('text60');
+             const inputEl1=document.getElementById('text61');
+             const inputEl2=document.getElementById('text62');
+
+            const text1 = inputEl.value;
+            const text2=inputEl0.value;
+            const text3=inputEl1.value;
+            const text4=inputEl2.value;
+             handl6(text1,text2,text3,text4);
+         }
+         
+         document.getElementById('form7').addEventListener('submit',onSubmitForm7);
+         function onSubmitForm7(e) {
+             e.preventDefault();
+             const inputEl = document.getElementById('number7');
+            const number = inputEl.value;
+             handl7(number);
+         }
+         document.getElementById('form8').addEventListener('submit',onSubmitForm8);
+         function onSubmitForm8(e) {
+             e.preventDefault();
+             const inputEl = document.getElementById('number8');
+            const number = inputEl.value;
+             handl8(number);
+         }
+         document.getElementById('form9').addEventListener('submit',onSubmitForm9);
+         function onSubmitForm9(e) {
+             e.preventDefault();
+             const inputEl = document.getElementById('number9');
+            const number = inputEl.value;
+             handl9(number);
+         }
+         document.getElementById('form10').addEventListener('submit',onSubmitForm10);
+         function onSubmitForm10(e) {
+             e.preventDefault();
+             
+             const inputEl = document.getElementById('number10');
+             const inputEl0=document.getElementById('number100');
+             const number2=inputEl0.value;
+            const number = inputEl.value;
+            
+             handl10(number,number2);
+         }
+
+         document.getElementById('form11').addEventListener('submit',onSubmitForm11);
+         function onSubmitForm11(e) {
+             e.preventDefault();
+             const intputEl=document.getElementById('number11');
+             const number=intputEl.value;
+             handl(number);
+         }
+         document.getElementById('form12').addEventListener('submit',onSubmitForm12);
+         function onSubmitForm12(e) {
+             e.preventDefault();
+             const intputEl=document.getElementById('number12');
+             const intputEl0=document.getElementById('number120');
+             const number=intputEl.value;
+             const number0=intputEl0.value;
+             handl12(number,number0);
+         }
+
+
+    </script>
+
+
+    
+</body>
+</html>
